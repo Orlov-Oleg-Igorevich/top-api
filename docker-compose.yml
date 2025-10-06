@@ -1,0 +1,23 @@
+version: '3.8'  # Версия схемы Compose
+
+services:
+  mongo:  # Имя вашего сервиса (контейнера)
+    image: mongo:latest  # Используем официальный образ MongoDB
+    container_name: top-apy-mongo  # Удобное имя для контейнера (опционально)
+    restart: always  # Контейнер будет перезапускаться автоматически после перезагрузки системы или падения
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}  # Логин для суперпользователя
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}  # Пароль для суперпользователя
+      MONGO_INITDB_DATABASE: top-api  # База данных, которая будет создана при первом запуске (опционально)
+    ports:
+      - "27018:27017"  # Пробрасываем порт MongoDB с контейнера на локальную машину (host-port:container-port)
+    volumes:
+      # Постоянное хранение данных БД. Даже если контейнер удалят, данные останутся.
+      - top_api_mongo_data:/data/db
+      # Можете подключить папку с дампами для восстановления или кастомными скриптами инициализации
+      # - ./mongo-init/:/docker-entrypoint-initdb.d/
+    command: mongod --wiredTigerCacheSizeGB 1.5
+
+# Определяем том (volume) для хранения данных
+volumes:
+  top_api_mongo_data:  # Имя тома. Docker сам создаст его при первом запуске.

@@ -1,0 +1,37 @@
+{
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.codeActionsOnSave": {
+  
+		"source.fixAll.eslint": "always",
+	},
+	"typescript.tsserver.experimental.enableProjectDiagnostics": true,
+
+	"errorLens.enabled": true,
+  	"errorLens.gutterIconsEnabled": true,
+  	"errorLens.statusBarMessageEnabled": true,
+
+  "typescript.tsserver.watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "synchronousWatchDirectory": true,
+    "fallbackPolling": "dynamicPriorityPolling",
+    "excludeDirectories": ["**/node_modules", "**/.git"]
+  },
+  "typescript.tsserver.maxTsServerMemory": 8192,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",  
+
+  "eslint.enable": true,
+  "eslint.lintTask.enable": false,
+  "eslint.probe": ["typescript", "typescriptreact"],
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "eslint.workingDirectories": ["${workspaceFolder}"],
+  "eslint.options": {
+    "overrideConfigFile": "eslint.config.mjs"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+}

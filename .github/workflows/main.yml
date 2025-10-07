@@ -27,4 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/Orlov-Oleg-Igorevich/top-api:develop
+          tags: ghcr.io/orlov-oleg-igorevich/top-api:develop
